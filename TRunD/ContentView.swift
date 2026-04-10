@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  TRunD
 //
-//  Created by Bitch Bag 1 on 11/24/25.
+//  Created by Lauren on 11/24/25.
 //
 
 import SwiftUI

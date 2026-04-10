@@ -6,6 +6,37 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F548B5452ED5104C00318089 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548B5442ED5104C00318089 /* DashboardView.swift */; };
+		F548B5492ED52DEA00318089 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548B5482ED511F900318089 /* DashboardViewModel.swift */; };
+		F548B54A2ED5300400318089 /* BGReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548B5462ED5119A00318089 /* BGReading.swift */; };
+		F548B54B2ED5300E00318089 /* DexcomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548B5472ED511C900318089 /* DexcomService.swift */; };
+		F548B54D2ED5308B00318089 /* WorkoutAdvisor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548B54C2ED5308800318089 /* WorkoutAdvisor.swift */; };
+		F548B55F2ED79C9B00318089 /* Starburst.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548B55E2ED79C9B00318089 /* Starburst.swift */; };
+		F548B5612ED79E9D00318089 /* JaggedCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548B5602ED79E9200318089 /* JaggedCircle.swift */; };
+		F548B5632ED7A12F00318089 /* TrendArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548B5622ED7A12A00318089 /* TrendArrow.swift */; };
+		F548B5652ED7A74E00318089 /* TrendArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548B5642ED7A74900318089 /* TrendArrowView.swift */; };
+		F548B5682ED9FF3700318089 /* DashboardCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548B5672ED9FF2A00318089 /* DashboardCard.swift */; };
+		F548B56A2EDA23D400318089 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548B5692EDA23CE00318089 /* SettingsView.swift */; };
+		F548B5702EDB53C300318089 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548B56F2EDB53BF00318089 /* ProfileView.swift */; };
+		F548B5742EDB53F700318089 /* TrophyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548B5732EDB53EC00318089 /* TrophyView.swift */; };
+		F548B5762EDB559C00318089 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548B5752EDB559600318089 /* Tab.swift */; };
+		F548B5782EDB55ED00318089 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548B5772EDB55E800318089 /* MainView.swift */; };
+		F548B57A2EDB562700318089 /* CustomToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548B5792EDB561C00318089 /* CustomToolbar.swift */; };
+		F548B57D2EDB5DB300318089 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548B57C2EDB5DAF00318089 /* LoginView.swift */; };
+		F548B57F2EDB69B300318089 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548B57E2EDB69B300318089 /* StatsView.swift */; };
+		F548B5812EDB73AD00318089 /* BadgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548B5802EDB73A800318089 /* BadgesView.swift */; };
+		F548B5832EDB7A8900318089 /* WorkoutHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548B5822EDB7A7900318089 /* WorkoutHistoryView.swift */; };
+		F580B68E2F099FA400975282 /* WorkoutStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F580B68D2F099F9B00975282 /* WorkoutStore.swift */; };
+		F5C1F1E62EE5F227005AF840 /* DexcomAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C1F1E52EE5F21E005AF840 /* DexcomAuthManager.swift */; };
+		F5C1F1E82EE88BCB005AF840 /* RunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C1F1E72EE88BC7005AF840 /* RunView.swift */; };
+		F5C1F1EA2EE8BB20005AF840 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C1F1E92EE8BB19005AF840 /* SignUpView.swift */; };
+		F5C1F1EC2EE8BD34005AF840 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C1F1EB2EE8BD25005AF840 /* UserProfile.swift */; };
+		F5C1F1EE2EE8CAB1005AF840 /* DashboardWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C1F1ED2EE8CAAB005AF840 /* DashboardWrapperView.swift */; };
+		F5C1F2052EE9DCD3005AF840 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C1F2042EE9DCCE005AF840 /* KeychainManager.swift */; };
+		F5CC26CA2F537D100036DF92 /* ShimmerBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CC26C92F537D0A0036DF92 /* ShimmerBackground.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		F548B5232ED50CE600318089 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,11 +58,74 @@
 		F548B5132ED50CE300318089 /* TRunD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TRunD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F548B5222ED50CE600318089 /* TRunDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TRunDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F548B52C2ED50CE600318089 /* TRunDUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TRunDUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F548B5442ED5104C00318089 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		F548B5462ED5119A00318089 /* BGReading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGReading.swift; sourceTree = "<group>"; };
+		F548B5472ED511C900318089 /* DexcomService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DexcomService.swift; sourceTree = "<group>"; };
+		F548B5482ED511F900318089 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		F548B54C2ED5308800318089 /* WorkoutAdvisor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutAdvisor.swift; sourceTree = "<group>"; };
+		F548B55E2ED79C9B00318089 /* Starburst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Starburst.swift; sourceTree = "<group>"; };
+		F548B5602ED79E9200318089 /* JaggedCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JaggedCircle.swift; sourceTree = "<group>"; };
+		F548B5622ED7A12A00318089 /* TrendArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendArrow.swift; sourceTree = "<group>"; };
+		F548B5642ED7A74900318089 /* TrendArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendArrowView.swift; sourceTree = "<group>"; };
+		F548B5672ED9FF2A00318089 /* DashboardCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCard.swift; sourceTree = "<group>"; };
+		F548B5692EDA23CE00318089 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F548B56F2EDB53BF00318089 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		F548B5732EDB53EC00318089 /* TrophyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyView.swift; sourceTree = "<group>"; };
+		F548B5752EDB559600318089 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		F548B5772EDB55E800318089 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		F548B5792EDB561C00318089 /* CustomToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToolbar.swift; sourceTree = "<group>"; };
+		F548B57C2EDB5DAF00318089 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		F548B57E2EDB69B300318089 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		F548B5802EDB73A800318089 /* BadgesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesView.swift; sourceTree = "<group>"; };
+		F548B5822EDB7A7900318089 /* WorkoutHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHistoryView.swift; sourceTree = "<group>"; };
+		F580B68D2F099F9B00975282 /* WorkoutStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStore.swift; sourceTree = "<group>"; };
+		F5C1F1E52EE5F21E005AF840 /* DexcomAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DexcomAuthManager.swift; sourceTree = "<group>"; };
+		F5C1F1E72EE88BC7005AF840 /* RunView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunView.swift; sourceTree = "<group>"; };
+		F5C1F1E92EE8BB19005AF840 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		F5C1F1EB2EE8BD25005AF840 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		F5C1F1ED2EE8CAAB005AF840 /* DashboardWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardWrapperView.swift; sourceTree = "<group>"; };
+		F5C1F2042EE9DCCE005AF840 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		F5CC26C92F537D0A0036DF92 /* ShimmerBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerBackground.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F548B56E2EDB50B500318089 /* Exceptions for "TRunD" folder in "TRunD" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = F548B5122ED50CE300318089 /* TRunD */;
+		};
+		F5CC269F2F521D850036DF92 /* Exceptions for "Resources" folder in "TRunDTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Lato-Black.ttf",
+				"Lato-Bold.ttf",
+				"Lato-Light.ttf",
+				"Lato-Regular.ttf",
+				"ModernSans-Light.otf",
+			);
+			target = F548B5212ED50CE600318089 /* TRunDTests */;
+		};
+		F5CC26A02F521D850036DF92 /* Exceptions for "Resources" folder in "TRunDUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Lato-Black.ttf",
+				"Lato-Bold.ttf",
+				"Lato-Light.ttf",
+				"Lato-Regular.ttf",
+				"ModernSans-Light.otf",
+			);
+			target = F548B52B2ED50CE600318089 /* TRunDUITests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F548B5152ED50CE300318089 /* TRunD */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F548B56E2EDB50B500318089 /* Exceptions for "TRunD" folder in "TRunD" target */,
+			);
 			path = TRunD;
 			sourceTree = "<group>";
 		};
@@ -43,6 +137,15 @@
 		F548B52F2ED50CE600318089 /* TRunDUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = TRunDUITests;
+			sourceTree = "<group>";
+		};
+		F548B5502ED76F3500318089 /* Resources */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F5CC269F2F521D850036DF92 /* Exceptions for "Resources" folder in "TRunDTests" target */,
+				F5CC26A02F521D850036DF92 /* Exceptions for "Resources" folder in "TRunDUITests" target */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +178,14 @@
 		F548B50A2ED50CE300318089 = {
 			isa = PBXGroup;
 			children = (
+				F5C1F2062EE9DD49005AF840 /* Logging In */,
+				F548B57B2EDB565800318089 /* Toolbar */,
+				F548B5662ED7ADA500318089 /* Asset */,
+				F548B5502ED76F3500318089 /* Resources */,
+				F548B5432ED50FD200318089 /* Services */,
+				F548B5422ED50FCD00318089 /* ViewModel */,
+				F548B5412ED50FBB00318089 /* Views */,
+				F548B53F2ED50F8F00318089 /* Models */,
 				F548B5152ED50CE300318089 /* TRunD */,
 				F548B5252ED50CE600318089 /* TRunDTests */,
 				F548B52F2ED50CE600318089 /* TRunDUITests */,
@@ -90,6 +201,83 @@
 				F548B52C2ED50CE600318089 /* TRunDUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F548B53F2ED50F8F00318089 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F5C1F1E52EE5F21E005AF840 /* DexcomAuthManager.swift */,
+				F548B5462ED5119A00318089 /* BGReading.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F548B5412ED50FBB00318089 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F5C1F1ED2EE8CAAB005AF840 /* DashboardWrapperView.swift */,
+				F5C1F1E72EE88BC7005AF840 /* RunView.swift */,
+				F548B5822EDB7A7900318089 /* WorkoutHistoryView.swift */,
+				F548B5802EDB73A800318089 /* BadgesView.swift */,
+				F548B5732EDB53EC00318089 /* TrophyView.swift */,
+				F548B57E2EDB69B300318089 /* StatsView.swift */,
+				F548B56F2EDB53BF00318089 /* ProfileView.swift */,
+				F548B5692EDA23CE00318089 /* SettingsView.swift */,
+				F548B5442ED5104C00318089 /* DashboardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F548B5422ED50FCD00318089 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F5CC26C92F537D0A0036DF92 /* ShimmerBackground.swift */,
+				F5C1F1EB2EE8BD25005AF840 /* UserProfile.swift */,
+				F548B5482ED511F900318089 /* DashboardViewModel.swift */,
+				F580B68D2F099F9B00975282 /* WorkoutStore.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F548B5432ED50FD200318089 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F548B54C2ED5308800318089 /* WorkoutAdvisor.swift */,
+				F548B5472ED511C900318089 /* DexcomService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F548B5662ED7ADA500318089 /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				F548B5642ED7A74900318089 /* TrendArrowView.swift */,
+				F548B5622ED7A12A00318089 /* TrendArrow.swift */,
+				F548B5602ED79E9200318089 /* JaggedCircle.swift */,
+				F548B55E2ED79C9B00318089 /* Starburst.swift */,
+				F548B5672ED9FF2A00318089 /* DashboardCard.swift */,
+			);
+			path = Asset;
+			sourceTree = "<group>";
+		};
+		F548B57B2EDB565800318089 /* Toolbar */ = {
+			isa = PBXGroup;
+			children = (
+				F548B5792EDB561C00318089 /* CustomToolbar.swift */,
+				F548B5772EDB55E800318089 /* MainView.swift */,
+				F548B5752EDB559600318089 /* Tab.swift */,
+			);
+			path = Toolbar;
+			sourceTree = "<group>";
+		};
+		F5C1F2062EE9DD49005AF840 /* Logging In */ = {
+			isa = PBXGroup;
+			children = (
+				F5C1F2042EE9DCCE005AF840 /* KeychainManager.swift */,
+				F5C1F1E92EE8BB19005AF840 /* SignUpView.swift */,
+				F548B57C2EDB5DAF00318089 /* LoginView.swift */,
+			);
+			path = "Logging In";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,6 +297,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				F548B5152ED50CE300318089 /* TRunD */,
+				F548B5502ED76F3500318089 /* Resources */,
 			);
 			name = TRunD;
 			packageProductDependencies = (
@@ -236,6 +425,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F548B57F2EDB69B300318089 /* StatsView.swift in Sources */,
+				F5C1F1E82EE88BCB005AF840 /* RunView.swift in Sources */,
+				F548B55F2ED79C9B00318089 /* Starburst.swift in Sources */,
+				F548B5492ED52DEA00318089 /* DashboardViewModel.swift in Sources */,
+				F5CC26CA2F537D100036DF92 /* ShimmerBackground.swift in Sources */,
+				F548B5612ED79E9D00318089 /* JaggedCircle.swift in Sources */,
+				F548B54D2ED5308B00318089 /* WorkoutAdvisor.swift in Sources */,
+				F548B5742EDB53F700318089 /* TrophyView.swift in Sources */,
+				F548B5682ED9FF3700318089 /* DashboardCard.swift in Sources */,
+				F5C1F1EA2EE8BB20005AF840 /* SignUpView.swift in Sources */,
+				F548B5812EDB73AD00318089 /* BadgesView.swift in Sources */,
+				F548B5632ED7A12F00318089 /* TrendArrow.swift in Sources */,
+				F5C1F2052EE9DCD3005AF840 /* KeychainManager.swift in Sources */,
+				F548B5702EDB53C300318089 /* ProfileView.swift in Sources */,
+				F548B56A2EDA23D400318089 /* SettingsView.swift in Sources */,
+				F5C1F1EE2EE8CAB1005AF840 /* DashboardWrapperView.swift in Sources */,
+				F548B57A2EDB562700318089 /* CustomToolbar.swift in Sources */,
+				F548B5832EDB7A8900318089 /* WorkoutHistoryView.swift in Sources */,
+				F5C1F1EC2EE8BD34005AF840 /* UserProfile.swift in Sources */,
+				F548B5652ED7A74E00318089 /* TrendArrowView.swift in Sources */,
+				F5C1F1E62EE5F227005AF840 /* DexcomAuthManager.swift in Sources */,
+				F548B5452ED5104C00318089 /* DashboardView.swift in Sources */,
+				F548B57D2EDB5DB300318089 /* LoginView.swift in Sources */,
+				F548B5782EDB55ED00318089 /* MainView.swift in Sources */,
+				F548B5762EDB559C00318089 /* Tab.swift in Sources */,
+				F580B68E2F099FA400975282 /* WorkoutStore.swift in Sources */,
+				F548B54B2ED5300E00318089 /* DexcomService.swift in Sources */,
+				F548B54A2ED5300400318089 /* BGReading.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,12 +605,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TRunD/TRunD.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UU3574BRQS;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TRunD/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Glimmer;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -409,8 +631,9 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 26.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.trund-work.TRunD";
+				PRODUCT_BUNDLE_IDENTIFIER = com.glimmer.endurance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -430,12 +653,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TRunD/TRunD.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UU3574BRQS;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TRunD/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Glimmer;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -451,8 +679,9 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 26.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.trund-work.TRunD";
+				PRODUCT_BUNDLE_IDENTIFIER = com.glimmer.endurance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
