@@ -8,6 +8,11 @@ It's built for diabetic endurance athletes who can't safely glance at a phone mi
 <!-- TODO: add a screenshot or short screen-recording GIF here — it's the fastest way to show the dashboard, trend ring, and spoken-announcement flow. -->
 <!-- ![Glimmer dashboard](docs/dashboard.png) -->
 
+<img width="590" height="1278" alt="IMG_0935" src="https://github.com/user-attachments/assets/8f4877b5-fdea-4683-9706-e20435d854b0" />
+<img width="590" height="1278" alt="IMG_0936" src="https://github.com/user-attachments/assets/3d9007ee-288b-44e6-b4ae-e73ed3d2fe18" />
+<img width="590" height="1278" alt="IMG_0937" src="https://github.com/user-attachments/assets/16670ca0-9ce8-48f7-84dd-ca20025c0f95" />
+<img width="590" height="1278" alt="IMG_0938" src="https://github.com/user-attachments/assets/abefc241-3d1d-4d1f-845c-a6186a639e66" />
+
 ---
 
 ## Highlights
