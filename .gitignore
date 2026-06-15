@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+
+# Xcode build output
+build/
+DerivedData/
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Xcode per-user state (never share these)
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+# Secrets — never commit credentials or API keys.
+# Put any client IDs / secrets / keys in this file and load them via
+# build settings (Target → Build Settings → add a user-defined setting),
+# not hardcoded in Swift.
+Secrets.xcconfig
+*.env
