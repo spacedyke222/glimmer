@@ -16,12 +16,8 @@ struct ProfileView: View {
 
     var body: some View {
         ZStack{
-            // --- Soft Periwinkle Gradient Background ---
-                    LinearGradient(
-                        gradient: Gradient(colors: [.white, Color.purple.opacity(0.9)]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
+            Color.black.ignoresSafeArea()
+            ShimmerBackground()
 
             ScrollView {
                 VStack(spacing: 24) {
@@ -98,7 +94,7 @@ struct ProfileView: View {
                         // Name
                         Text(profile.name)
                             .font(.system(size: 28, weight: .bold))
-                            .foregroundColor(Color.indigo)
+                            .foregroundColor(.white)
 
                         // Email
                         HStack {
@@ -106,7 +102,7 @@ struct ProfileView: View {
                                 .foregroundColor(Color.pink)
                             TextField("Email", text: $profile.email)
                                 .font(.system(size: 18, weight: .medium))
-                                .foregroundColor(Color.indigo)
+                                .foregroundColor(.white)
                         }
 
                         // Birthday / Age
@@ -115,7 +111,7 @@ struct ProfileView: View {
                                 .foregroundColor(Color.pink)
                             Text("Age: \(age)")
                                 .font(.system(size: 18, weight: .medium))
-                                .foregroundColor(Color.indigo)
+                                .foregroundColor(.white)
                         }
 
                         // Primary Sport
@@ -124,7 +120,7 @@ struct ProfileView: View {
                                 .foregroundColor(Color.pink)
                             Text("Primary Sport: \(profile.primaryActivity)")
                                 .font(.system(size: 18, weight: .medium))
-                                .foregroundColor(Color.indigo)
+                                .foregroundColor(.white)
                         }
 
                         // Height / Weight
@@ -134,7 +130,7 @@ struct ProfileView: View {
                                     .foregroundColor(Color.pink)
                                 Text("Height: \(profile.height) in")
                                     .font(.system(size: 18, weight: .medium))
-                                    .foregroundColor(Color.indigo)
+                                    .foregroundColor(.white)
                             }
 
                             HStack {
@@ -142,7 +138,7 @@ struct ProfileView: View {
                                     .foregroundColor(Color.pink)
                                 Text("Weight: \(profile.weight) lbs")
                                     .font(.system(size: 18, weight: .medium))
-                                    .foregroundColor(Color.indigo)
+                                    .foregroundColor(.white)
                             }
                         }
 
@@ -152,7 +148,7 @@ struct ProfileView: View {
                                 .foregroundColor(Color.pink)
                             TextField("Personal Mantra", text: $profile.mantra)
                                 .font(.system(size: 18, weight: .medium))
-                                .foregroundColor(Color.indigo)
+                                .foregroundColor(.white)
                         }
 
                         Spacer()
@@ -160,16 +156,13 @@ struct ProfileView: View {
                     .padding(30)
                     .background(
                         RoundedRectangle(cornerRadius: 25, style: .continuous)
-                            .fill(
-                                LinearGradient(
-                                    gradient: Gradient(colors: [Color.purple.opacity(0.9), Color.white.opacity(0.9)]),
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                )
+                            .fill(.ultraThinMaterial)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 25, style: .continuous)
+                                    .stroke(Color.white.opacity(0.15), lineWidth: 1)
                             )
-                            .shadow(color: Color.indigo.opacity(0.4), radius: 6, y: 4)
-                    .padding(.horizontal)
-                        )
+                            .shadow(color: .black.opacity(0.2), radius: 12, y: 6)
+                    )
                 }
                 .padding(.top, 50)
             }

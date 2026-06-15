@@ -30,11 +30,15 @@ struct BadgesView: View {
     ]
     
     var body: some View {
-        ScrollView {
+        ZStack {
+            Color.black.ignoresSafeArea()
+            ShimmerBackground()
+
+            ScrollView {
             VStack(spacing: 20) {
                 
                 Text("Your Achievements")
-                    .foregroundColor(Color.indigo)
+                    .foregroundColor(.white)
                     .font(.largeTitle)
                     .bold()
                     .padding(.top, 40)
@@ -54,18 +58,18 @@ struct BadgesView: View {
                             
                             Text(badge.name)
                                 .font(.headline)
-                                .foregroundColor(badge.isUnlocked ? Color.indigo : Color.gray)
+                                .foregroundColor(badge.isUnlocked ? .white : Color.gray)
                             
                             Text(badge.description)
                                 .font(.caption)
-                                .foregroundColor(.secondary)
+                                .foregroundColor(.white.opacity(0.7))
                                 .multilineTextAlignment(.center)
                         }
                         .padding()
                         .frame(width: 170, height: 200) // uniform card size
                         .background(
                             RoundedRectangle(cornerRadius: 20)
-                                .fill(.purple.opacity(0.2))
+                                .fill(.ultraThinMaterial)
                         )
                     }
                 }
@@ -75,6 +79,7 @@ struct BadgesView: View {
             }
         }
         .navigationTitle("Badges & Achievements")
+        }
     }
 }
 

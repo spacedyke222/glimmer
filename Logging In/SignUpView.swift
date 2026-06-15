@@ -214,10 +214,13 @@ struct SignUpView: View {
         do {
             try modelContext.save()
 
-            // Save password in Keychain
-            let success = KeychainManager.savePassword(password, for: email)
-            if !success {
-                print("❌ Failed to save password in Keychain")
+            // Store a salted PBKDF2 hash in the Keychain (never the raw password).
+            if let storage = PasswordHasher.makeStorageString(for: password) {
+                if !KeychainManager.savePassword(storage, for: email) {
+                    print("❌ Failed to save password in Keychain")
+                }
+            } else {
+                print("❌ Failed to hash password")
             }
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

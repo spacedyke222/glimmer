@@ -2,14 +2,20 @@
 //  BackgroundAudioKeeper.swift
 //  TRunD (Glimmer)
 //
-//  Keeps the app running while a workout is in progress so glucose
-//  announcements still fire with the screen locked / phone pocketed.
+//  Owns the audio *session* that spoken glucose announcements play through, so
+//  they stay audible during a workout (silent switch on, mixed with music,
+//  screen locked).
 //
-//  iOS suspends a backgrounded app once it stops producing audio. Declaring
-//  the `audio` background mode (Info.plist) plus playing a continuous
-//  vanishingly-quiet tone keeps the process alive. Paired with
-//  `RunLocationKeeper`, which receives a location stream — the location
-//  stream is the most reliable suspension blocker on modern iOS.
+//  It does NOT keep the app alive by playing a tone. An earlier version drove a
+//  continuous silent 440 Hz sine wave through an AVAudioEngine for that — which
+//  caused IPCAUClient (-66748) failures and starved the main thread. Keeping the
+//  app alive is `RunLocationKeeper`'s job (the location stream). Do not re-add
+//  the audio engine here.
+//
+//  Activation runs OFF the main thread: `AVAudioSession.setActive` is
+//  synchronous and can block while it negotiates with the media server, which
+//  froze the UI the instant a run started. AVAudioSession is thread-safe, so we
+//  do it on a background task and never stall the Start tap.
 //
 
 import AVFoundation
@@ -19,12 +25,7 @@ import CoreLocation
 final class BackgroundAudioKeeper {
     static let shared = BackgroundAudioKeeper()
 
-    private let engine = AVAudioEngine()
-    private let player = AVAudioPlayerNode()
-    private let format = AVAudioFormat(standardFormatWithSampleRate: 44_100, channels: 1)!
-
-    private var isWired = false
-    private var isRunning = false
+    private var isActive = false
     private var wantsKeepAlive = false
 
     private init() {
@@ -37,65 +38,35 @@ final class BackgroundAudioKeeper {
         }
     }
 
-    /// Call when a workout starts.
+    /// Call when a workout starts — activates the playback session (off-main) so
+    /// announcements are audible even with the silent switch on or music playing.
     func start() {
         wantsKeepAlive = true
-        guard !isRunning else { return }
-
-        let session = AVAudioSession.sharedInstance()
-        do {
-            try session.setCategory(.playback, mode: .spokenAudio, options: [.mixWithOthers])
-            try session.setActive(true)
-        } catch {
-            print("BackgroundAudioKeeper: audio session error:", error)
-            return
+        guard !isActive else { return }
+        isActive = true
+        Task.detached(priority: .userInitiated) {
+            do {
+                let session = AVAudioSession.sharedInstance()
+                try session.setCategory(.playback, mode: .spokenAudio, options: [.mixWithOthers])
+                try session.setActive(true)
+            } catch {
+                print("BackgroundAudioKeeper: audio session error:", error)
+                await Self.shared.markInactive()
+            }
         }
-
-        if !isWired {
-            engine.attach(player)
-            engine.connect(player, to: engine.mainMixerNode, format: format)
-            isWired = true
-        }
-
-        do {
-            try engine.start()
-        } catch {
-            print("BackgroundAudioKeeper: engine start error:", error)
-            return
-        }
-
-        player.scheduleBuffer(silentBuffer(), at: nil, options: .loops, completionHandler: nil)
-        player.play()
-        isRunning = true
     }
 
     /// Call when a workout ends.
     func stop() {
         wantsKeepAlive = false
-        guard isRunning else { return }
-        player.stop()
-        engine.stop()
-        try? AVAudioSession.sharedInstance().setActive(false, options: [.notifyOthersOnDeactivation])
-        isRunning = false
+        guard isActive else { return }
+        isActive = false
+        Task.detached(priority: .utility) {
+            try? AVAudioSession.sharedInstance().setActive(false, options: [.notifyOthersOnDeactivation])
+        }
     }
 
-    private func silentBuffer() -> AVAudioPCMBuffer {
-        let buffer = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: 4_410)!
-        buffer.frameLength = buffer.frameCapacity
-        let amplitude: Float = 1e-4
-        let sampleRate = Float(format.sampleRate)
-        let frequency: Float = 440
-        if let channels = buffer.floatChannelData {
-            for channel in 0..<Int(format.channelCount) {
-                let ptr = channels[channel]
-                for frame in 0..<Int(buffer.frameLength) {
-                    let t = Float(frame) / sampleRate
-                    ptr[frame] = amplitude * sin(2 * Float.pi * frequency * t)
-                }
-            }
-        }
-        return buffer
-    }
+    private func markInactive() { isActive = false }
 
     private func handleInterruption(_ note: Notification) {
         guard let info = note.userInfo,
@@ -103,7 +74,7 @@ final class BackgroundAudioKeeper {
               let type = AVAudioSession.InterruptionType(rawValue: raw) else { return }
         switch type {
         case .began:
-            isRunning = false
+            isActive = false
         case .ended:
             if wantsKeepAlive { start() }
         @unknown default:

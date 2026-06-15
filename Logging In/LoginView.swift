@@ -145,7 +145,7 @@ struct LoginView: View {
                 return
             }
 
-            if storedPassword == password {
+            if PasswordHasher.verify(password, storage: storedPassword) {
                 loggedInProfile = profile
                 loginError = ""
             } else {

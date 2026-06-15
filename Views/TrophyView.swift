@@ -9,7 +9,14 @@ import SwiftUI
 
 struct TrophyView: View {
     var body: some View {
-        Text("Badges & Awards")
+        ZStack {
+            Color.black.ignoresSafeArea()
+            ShimmerBackground()
+
+            Text("Badges & Awards")
+                .font(.largeTitle).bold()
+                .foregroundColor(.white)
+        }
     }
 }
 #Preview {

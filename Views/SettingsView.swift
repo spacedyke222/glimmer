@@ -17,14 +17,18 @@ struct SettingsView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView {
+            ZStack {
+                Color.black.ignoresSafeArea()
+                ShimmerBackground()
+
+                ScrollView {
                 VStack(spacing: 24) {
 
                     // Custom title aligned to the right
                             HStack {
                                 Text("Settings")
                                     .font(.largeTitle).bold()
-                                    .foregroundColor(Color.indigo.opacity(0.6))
+                                    .foregroundColor(.white)
                                 Spacer()
                             }
                             .padding(.top)
@@ -32,13 +36,12 @@ struct SettingsView: View {
 
                     // --- Voice Announcements Card ---
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .fill(
-                            LinearGradient(gradient: Gradient(colors: [Color.purple, Color.pink]),
-                                startPoint: .top,
-                                endPoint: .bottom
-                            )
+                        .fill(.ultraThinMaterial)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                .stroke(Color.white.opacity(0.15), lineWidth: 1)
                         )
-                        .shadow(color: Color.indigo.opacity(0.2), radius: 8, x: 0, y: 4)
+                        .shadow(color: .black.opacity(0.2), radius: 8, x: 0, y: 4)
                         .frame(height: 120)
                         .overlay(
                             VStack(alignment: .leading, spacing: 16) {
@@ -69,13 +72,12 @@ struct SettingsView: View {
 
                     // --- Watch Notifications Card ---
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .fill(
-                            LinearGradient(gradient: Gradient(colors: [Color.purple, Color.orange]),
-                                startPoint: .top,
-                                endPoint: .bottom
-                                )
+                        .fill(.ultraThinMaterial)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                .stroke(Color.white.opacity(0.15), lineWidth: 1)
                         )
-                        .shadow(color: Color.indigo.opacity(0.2), radius: 8, x: 0, y: 4)
+                        .shadow(color: .black.opacity(0.2), radius: 8, x: 0, y: 4)
                         .frame(height: 120)
                         .overlay(
                             VStack(alignment: .leading, spacing: 16) {
@@ -107,13 +109,12 @@ struct SettingsView: View {
 
                     // Connect Watch Card
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                            .fill(
-                                                LinearGradient(gradient: Gradient(colors: [Color.purple, Color.pink]),
-                                                    startPoint: .top,
-                                                    endPoint: .bottom
-                                                )
+                                            .fill(.ultraThinMaterial)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                                    .stroke(Color.white.opacity(0.15), lineWidth: 1)
                                             )
-                                            .shadow(color: Color.indigo.opacity(0.2), radius: 8, x: 0, y: 4)
+                                            .shadow(color: .black.opacity(0.2), radius: 8, x: 0, y: 4)
                                             .frame(height: 100)
                                             .overlay(
                                                 Button(action: {
@@ -138,14 +139,12 @@ struct SettingsView: View {
 
                     // --- Connect Libre Sensor (LibreLinkUp) ---
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .fill(
-                            LinearGradient(
-                                gradient: Gradient(colors: [Color.purple, Color.orange]),
-                                startPoint: .top,
-                                endPoint: .bottom
-                            )
+                        .fill(.ultraThinMaterial)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                .stroke(Color.white.opacity(0.15), lineWidth: 1)
                         )
-                        .shadow(color: Color.indigo.opacity(0.2), radius: 8, x: 0, y: 4)
+                        .shadow(color: .black.opacity(0.2), radius: 8, x: 0, y: 4)
                         .frame(height: 100)
                         .overlay(
                             Button(action: {
@@ -174,9 +173,9 @@ struct SettingsView: View {
                 .padding(.top, 20)
 
             }
-            .background()
             .sheet(isPresented: $showLibreLogin) {
                 LibreLoginView()
+            }
             }
 
         }

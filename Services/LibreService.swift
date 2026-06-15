@@ -245,7 +245,9 @@ actor LibreService {
                 .flatMap { String(data: $0, encoding: .utf8) }
                 .map { String($0.prefix(200)) }
                 ?? ""
+            #if DEBUG
             print("LibreService HTTP \(http.statusCode):", body)
+            #endif
             throw LibreError.serverError(code: http.statusCode, body: body)
         }
     }

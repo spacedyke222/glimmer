@@ -3,6 +3,7 @@
 
 import SwiftUI
 import Charts
+import Combine
 
 // NOTE: This view is intended to be presented only within TabContainerView, which provides the universal toolbar.
 // Do not wrap this in its own NavigationStack to ensure toolbar visibility.
@@ -64,19 +65,22 @@ struct RunView: View {
     @State private var connectingWatch = false
     
     // Timer
-    @State private var runTimer: Timer?
     @State private var libreTimer: Timer?
+
+    /// Drives the elapsed-time display via a SwiftUI timer publisher instead of a
+    /// hand-scheduled `Timer`. The old `startRunTimer()` created a `Timer` whose
+    /// closure captured `self` (a View struct) and was double-registered on the
+    /// run loop (`scheduledTimer` + `RunLoop.add(.common)`) — fragile, and the
+    /// cause of the UI freezing a second into a run.
+    private let ticker = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     // Environment
     @EnvironmentObject var workoutStore: WorkoutStore
     
     var body: some View {
         ZStack {
-            Color(.white).ignoresSafeArea()
-                .onChange(of: libreAuth.isLoggedIn) { _, loggedIn in
-                    if loggedIn { startLibreTimer() }
-                    else { stopLibreTimer() }
-                }
+            Color.black.ignoresSafeArea()
+            ShimmerBackground()
 
             VStack(spacing: 16) {
                 
@@ -143,7 +147,8 @@ struct RunView: View {
                 HStack {
                     Text(isRunning ? "Recording — \(activity.displayName)" : "Ready to Record")
                         .font(.custom("Lato-Bold", size: 20))
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
+                        .shadow(radius: 2)
                     Spacer()
                 }
                 .padding(.horizontal)
@@ -152,17 +157,20 @@ struct RunView: View {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Glucose Reading")
                         .font(.custom("Lato-Regular", size: 20))
-                        .foregroundColor(.black.opacity(0.9))
-                    
-                    LiveBGChart(readings: readings, accent: Color.black)
+                        .foregroundColor(.white.opacity(0.9))
+
+                    LiveBGChart(readings: readings, accent: .cyan)
                         .frame(height: 220)
                         .padding(.horizontal, -8)
                 }
                 .padding()
                 .background(
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(Color.orange.opacity(0.2))
-                        .shadow(color: .orange, radius: 4, y: 280)
+                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        .fill(.ultraThinMaterial)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                .stroke(Color.white.opacity(0.15), lineWidth: 1)
+                        )
                 )
                
                 .cornerRadius(16)
@@ -172,15 +180,18 @@ struct RunView: View {
                 HStack(spacing: 12) {
                     infoStat(title: "Elapsed", value: timeString(from: elapsedSeconds))
                     Divider().frame(height: 42).background(Color.gray)
-                    infoStat(title: "BG", value: "\(currentBG) mg/dL")
+                    infoStat(title: "BG", value: "\(Int(currentBG)) mg/dL")
                     Divider().frame(height: 42).background(Color.gray.opacity(0.25))
                     infoStat(title: "Distance", value: String(format: "%.2f mi", distanceMiles))
                 }
                 .padding()
                 .background(
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(Color.orange.opacity(0.2))
-                        .shadow(color: .orange, radius: 4, y: 70)
+                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        .fill(.ultraThinMaterial)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                .stroke(Color.white.opacity(0.15), lineWidth: 1)
+                        )
                         
                 )
                 
@@ -211,6 +222,10 @@ struct RunView: View {
             }
             .padding(.top, -80)
         }
+        .onReceive(ticker) { _ in
+            guard isRunning, let start = runStartDate else { return }
+            elapsedSeconds = Date().timeIntervalSince(start)
+        }
         .onAppear {
             seedInitialReadingIfNeeded()
             attemptAutoReconnectWatch()
@@ -219,8 +234,10 @@ struct RunView: View {
             attemptSilentLibreLogin()
         }
         .onDisappear {
-            stopRunTimer()
             stopLibreTimer()
+        }
+        .onChange(of: libreAuth.isLoggedIn) { _, loggedIn in
+            if loggedIn { startLibreTimer() } else { stopLibreTimer() }
         }
     }
     
@@ -231,10 +248,10 @@ struct RunView: View {
         VStack(alignment: .leading, spacing: 6) {
             Text(title.uppercased())
                 .font(.custom("Lato-Bold", size: 12))
-                .foregroundColor(.black.opacity(0.7))
+                .foregroundColor(.white.opacity(0.7))
             Text(value)
                 .font(.custom("Lato-Light", size: 16))
-                .foregroundColor(.black)
+                .foregroundColor(.white)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -256,7 +273,6 @@ struct RunView: View {
         elapsedSeconds = 0
         readings.removeAll()
         readings.append(LiveReading(elapsedSeconds: 0, timestamp: Date(), bg: Double(currentBG)))
-        startRunTimer()
         startLibreTimer()
         BackgroundAudioKeeper.shared.start()
         RunLocationKeeper.shared.start()
@@ -264,7 +280,6 @@ struct RunView: View {
     
     private func stopRun() {
         isRunning = false
-        stopRunTimer()
         stopLibreTimer()
         BackgroundAudioKeeper.shared.stop()
         RunLocationKeeper.shared.stop()
@@ -302,21 +317,6 @@ struct RunView: View {
     }
 
     // MARK: - Timers
-    
-    private func startRunTimer() {
-        stopRunTimer()
-        runTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-            if let start = runStartDate, isRunning {
-                elapsedSeconds = Date().timeIntervalSince(start)
-            }
-        }
-        RunLoop.main.add(runTimer!, forMode: .common)
-    }
-    
-    private func stopRunTimer() {
-        runTimer?.invalidate()
-        runTimer = nil
-    }
     
     private func startLibreTimer() {
         stopLibreTimer()
