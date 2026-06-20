@@ -70,6 +70,21 @@ struct SettingsView: View {
                             .padding()
                         )
 
+                    // Test voice button — instant check, independent of the 5-min timer
+                    if viewModel.announcementsEnabled {
+                        Button {
+                            viewModel.testVoice()
+                        } label: {
+                            Label("Test Voice", systemImage: "speaker.wave.2.fill")
+                                .font(.subheadline.bold())
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 12)
+                                .background(.ultraThinMaterial, in: Capsule())
+                                .overlay(Capsule().stroke(Color.white.opacity(0.15), lineWidth: 1))
+                        }
+                    }
+
                     // --- Watch Notifications Card ---
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
                         .fill(.ultraThinMaterial)

@@ -80,9 +80,31 @@ class DashboardViewModel: ObservableObject {
             }
     }
     
+    /// Speaks an announcement immediately — used by the Settings "Test Voice"
+    /// button so audio can be verified on the spot, without waiting for the
+    /// timer or a fresh Libre reading.
+    func testVoice() {
+        let value = latestReading.map { Int($0.value) } ?? 120
+        speakBGValue(value)
+    }
+
     private func speakBGValue(_ value: Int) {
-        let utterance = AVSpeechUtterance(string: "Your blood glucose is \(value)")
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        speechSynthesizer.speak(utterance)
+        // A glucose announcement must be audible even on silent (or with the
+        // Action Button toggled to silent) — that's the whole point. Configure
+        // and activate the session OFF the main thread: AVAudioSession.setActive
+        // is synchronous and blocks the main thread (doing it on-main is what
+        // froze the app), and AVAudioSession is thread-safe. Then speak back on
+        // the main actor.
+        Task.detached(priority: .userInitiated) { [weak self] in
+            let session = AVAudioSession.sharedInstance()
+            try? session.setCategory(.playback, mode: .spokenAudio, options: [.duckOthers])
+            try? session.setActive(true)
+            await MainActor.run {
+                guard let self else { return }
+                let utterance = AVSpeechUtterance(string: "Your blood glucose is \(value)")
+                utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+                self.speechSynthesizer.speak(utterance)
+            }
+        }
     }
 }
